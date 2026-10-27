@@ -97,7 +97,7 @@ function toast(t){const e=document.createElement('div');e.className='toast';e.te
 const opt=(a,s)=>a.map(x=>`<option${x==s?' selected':''}>${x}</option>`).join('');
 function R(){$('#app').innerHTML=S.u?shell():login()}
 function go(v){S.v=v;S.open=null;R();scrollTo(0,0)}
-const CFG={url:'https://deeeyzzkhryxuqxyxmja.supabase.co/rest/v1/',key:'sb_publishable_Yg04aGy7DNzIplnVBNuQhg_U0-cOTbg'}; // Cole aqui a URL e a chave pública (anon/publishable) do seu projeto Supabase
+const CFG={url:'https://deeeyzzkhryxuqxyxmja.supabase.co',key:'sb_publishable_Yg04aGy7DNzIplnVBNuQhg_U0-cOTbg'}; // Cole aqui a URL e a chave pública (anon/publishable) do seu projeto Supabase
 const ON=()=>!!(CFG.url&&CFG.key);let TK=null;
 async function api(p,o={}){const r=await fetch(CFG.url+p,{...o,headers:{apikey:CFG.key,Authorization:'Bearer '+(TK||CFG.key),'Content-Type':'application/json',Prefer:'return=representation',...(o.headers||{})}}),t=await r.text();let j=null;try{j=t?JSON.parse(t):null}catch(e){j=t}if(!r.ok)throw new Error((j&&(j.msg||j.message||j.error_description))||r.statusText);return j}
 async function loadAll(){const g=t=>api('/rest/v1/'+t+(t.includes('?')?'&':'?')+'select=*'),[pf,oc,ck,ep,tr]=await Promise.all([g('profiles'),g('occurrences?order=id'),g('checklists'),g('epis'),g('trainings')]);
